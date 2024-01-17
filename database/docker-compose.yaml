@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  catalog-database:
+    image: mongo
+    container_name: catalog-database
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: edgomes
+      MONGO_INITDB_ROOT_PASSWORD: senha123
+    volumes:
+      - catalog-data:/data/catalog
+
+volumes:
+  catalog-data:
