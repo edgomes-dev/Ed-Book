@@ -18,25 +18,26 @@ public class BookController {
     BookService service;
 
     @GET
-    public List<Book> findAll() {
-        return service.findAll();
+    public Response findAll() {
+        return Response.status(Response.Status.OK).entity(service.findAll()).build();
     }
 
     @GET
     @Path("/{id}")
-    public Book findById(String id) {
-        return service.findById(id);
+    public Response findById(String id) {
+        return Response.status(Response.Status.OK).entity(service.findById(id)).build();
     }
 
     @POST
-    public Response create(Book book) {
-        book.persist();
-        return Response.created(URI.create("/books/" + book.id)).build();
+    @Path("/{id}")
+    public Response create(String id, Book book) {
+        System.out.println(book);
+        return Response.status(Response.Status.CREATED).entity(service.create(id, book)).build();
     }
 
     @PUT
     @Path("/{id}")
-    public void update(String id, Book book) {
-        service.update(id, book);
+    public Response update(String id, Book book) {
+        return Response.status(Response.Status.OK).entity(service.update(id, book)).build();
     }
 }

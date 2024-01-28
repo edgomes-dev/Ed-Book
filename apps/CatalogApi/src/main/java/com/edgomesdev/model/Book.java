@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.bson.types.ObjectId;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -14,6 +15,7 @@ import org.bson.codecs.pojo.annotations.BsonProperty;
 @AllArgsConstructor
 @MongoEntity
 public class Book extends PanacheMongoEntity {
+    private ObjectId id;
     private String title;
     private String publisher;
     @BsonProperty("release_year")

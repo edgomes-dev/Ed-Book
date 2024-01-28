@@ -18,25 +18,24 @@ public class GenreController {
     GenreService service;
 
     @GET
-    public List<Genre> findAll() {
-        return service.findAll();
+    public Response findAll() {
+        return Response.status(Response.Status.OK).entity(service.findAll()).build();
     }
 
     @GET
     @Path("/{id}")
-    public Genre findById(String id) {
-        return service.findById(id);
+    public Response findById(String id) {
+        return Response.status(Response.Status.OK).entity(service.findById(id)).build();
     }
 
     @POST
     public Response create(Genre genre) {
-        genre.persist();
-        return Response.created(URI.create("/genres/" + genre.id)).build();
+        return Response.status(Response.Status.CREATED).entity(service.create(genre)).build();
     }
 
     @PUT
     @Path("/{id}")
-    public void update(String id, Genre genre) {
-        service.update(id, genre);
+    public Response update(String id, Genre genre) {
+        return Response.status(Response.Status.OK).entity(service.update(id, genre)).build();
     }
 }
