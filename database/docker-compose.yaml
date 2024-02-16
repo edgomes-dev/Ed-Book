@@ -11,6 +11,17 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: senha123
     volumes:
       - catalog-data:/data/catalog
+  order-database:
+    image: mongo
+    container_name: order-database
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: edgomes
+      MONGO_INITDB_ROOT_PASSWORD: senha123
+    volumes:
+      - order-data:/data/order
 
 volumes:
   catalog-data:
+  order-data:

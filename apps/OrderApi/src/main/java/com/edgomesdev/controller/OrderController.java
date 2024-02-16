@@ -1,21 +1,18 @@
 package com.edgomesdev.controller;
 
-import com.edgomesdev.model.Book;
-import com.edgomesdev.service.BookService;
+import com.edgomesdev.model.Order;
+import com.edgomesdev.service.OrderService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import java.net.URI;
-import java.util.List;
-
-@Path("/books")
+@Path("/orders")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class BookController {
+public class OrderController {
     @Inject
-    BookService service;
+    OrderService service;
 
     @GET
     public Response findAll() {
@@ -29,14 +26,13 @@ public class BookController {
     }
 
     @POST
-    @Path("/{id}")
-    public Response create(String id, Book book) {
-        return Response.status(Response.Status.CREATED).entity(service.create(id, book)).build();
+    public Response create(Order order) {
+        return Response.status(Response.Status.CREATED).entity(service.create(order)).build();
     }
 
-    @PUT
+    /*@PUT
     @Path("/{id}")
-    public Response update(String id, Book book) {
-        return Response.status(Response.Status.OK).entity(service.update(id, book)).build();
-    }
+    public Response update(String id, Order order) {
+        return Response.status(Response.Status.OK).entity(service.update(id, order)).build();
+    }*/
 }

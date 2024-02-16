@@ -36,6 +36,7 @@ public class BookControllerTest {
 
     private final List<Book> bookList = Arrays.asList(bookExists, new Book(new ObjectId("65ac4f6ecdbad84eeee861cd"), "Pouso do sossego", "Saraiva", "2014", "Este é o segundo volume da trilogia Tempus fugit, que teve início com Tapete de silêncio.", 10));
 
+
     @Test
     public void should_findAllSucess() {
         when(service.findAll()).thenReturn(bookList);
